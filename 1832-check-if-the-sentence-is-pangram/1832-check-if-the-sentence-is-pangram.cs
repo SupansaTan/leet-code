@@ -2,20 +2,12 @@ public class Solution {
     public bool CheckIfPangram(string sentence) {
         bool[] alphabet = new bool[26];
         
-        for (int i = 0; i < 26; i++)
+        foreach (char c in sentence)
         {
-            char currentChar = (char)('a' + i);
-            if (sentence.Contains(currentChar))
-            {
-                alphabet[i] = true;
-            }
-            else
-            {
-                // not found some char
-                return false;
-            }
+            int index = c - 'a';
+            alphabet[index] = true;
         }
         
-        return true;
+        return !alphabet.Contains(false);
     }
 }
