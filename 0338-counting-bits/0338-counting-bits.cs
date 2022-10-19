@@ -18,22 +18,24 @@
 
 public class Solution {
     public int[] CountBits(int n) {
+        // base case
+        if (n == 0)
+            return new int[1];
+        
         int[] count = new int[n+1];
         count[0] = 0;
+        count[1] = 1;
         
-        if (n < 1)
+        for (int i = 2; i < n+1; i++)
         {
-            return count;
-        }
-
-        int pow = 1;
-        for (int i = 1; i < n+1; i++)
-        {
-            if (i == pow * 2)
+            if (i % 2 == 0)
             {
-                pow *= 2;
+                count[i] = count[i / 2];
             }
-            count[i] = count[i-pow] + 1;
+            else
+            {
+                count[i] = count[i / 2] + 1;
+            }
         }
         return count;
     }
