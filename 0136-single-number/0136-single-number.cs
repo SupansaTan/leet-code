@@ -5,13 +5,14 @@ public class Solution {
             return nums[0];
         }
         
-        for (int i = 0; i < nums.Length; i++)
+        Array.Sort(nums);
+        for (int i = 1; i < nums.Length; i+=2)
         {
-            if (nums.Where(x => x == nums[i]).ToArray().Length == 1)
+            if (nums[i] != nums[i-1])
             {
-                return nums[i];
+                return nums[i-1];
             }
         }
-        return 0;
+        return nums[nums.Length-1];
     }
 }
